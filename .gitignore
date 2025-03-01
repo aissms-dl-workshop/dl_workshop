@@ -1,7 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-archive
+data_source/
 # C extensions
 *.so
 # Distribution / packaging
