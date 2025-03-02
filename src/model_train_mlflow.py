@@ -64,7 +64,7 @@ def train_model_mlflow(config_file):
                                                    class_mode=class_mode)
         test_set = test_gen.flow_from_directory(test_set, 
                                                 target_size=img_size,
-                                                batch_size=batch_size,
+                                                batch_size=batch_size)
          
         ##############MLFLOW START##############
 
@@ -81,12 +81,14 @@ def train_model_mlflow(config_file):
 
             train_loss = history.history['loss'][-1]
             val_loss = history.history['val_loss'][-1]
+            val_acc = history.history['val_accuracy'][-1]
+            accuracy = history.history['accuracy'][-1]
 
             mlflow.log_param('epochs', epochs)
             mlflow.log_param('loss', loss)
             mlflow.log_param('val_loss', val_loss)
             mlflow.log_param('val_accuracy', val_acc)
-            mlflow.log_param('metrics', metrics)
+            mlflow.log_param('metrics', accuracy)
             
             tracking_url_type_store = urlparse(mlflow.get_artifact_uri()).scheme
             if tracking_url_type_store != "file":

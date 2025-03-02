@@ -10,3 +10,5 @@ PyYaml
 streamlit
 keras_preprocessing
 mlflow
+h5py
+opencv-python
